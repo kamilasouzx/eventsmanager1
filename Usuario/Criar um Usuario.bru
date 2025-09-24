@@ -1,0 +1,27 @@
+meta {
+  name: Criar um Usuario
+  type: http
+  seq: 1
+}
+
+post {
+  url: http://localhost:8080/api/v1/usuario
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "email":"kskamila@gmail.com",
+    "senha":"kamila12",
+    "nome":"Kamila Souza",
+    "cpf":"11881875970",
+    "telefone":"48991530381",
+    "tipo":"ADMINISTRADOR",
+    "dataNascimento":"2007-06-21"
+  }
+}
+
+settings {
+  encodeUrl: true
+}

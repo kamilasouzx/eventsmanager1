@@ -1,0 +1,27 @@
+meta {
+  name: Atualizar um Usuario
+  type: http
+  seq: 2
+}
+
+put {
+  url: http://localhost:8080/api/v1/usuario/a3cc7939-9c1b-44dd-8330-7f00828aed90
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "email":"kskamila@gmail.com",
+    "senha":"kamila12345",
+    "nome":"Kamila Souza",
+    "cpf":"11881875970",
+    "telefone":"48991530381",
+    "tipo":"ADMINISTRADOR",
+    "dataNascimento":"2007-06-21"
+  }
+}
+
+settings {
+  encodeUrl: true
+}

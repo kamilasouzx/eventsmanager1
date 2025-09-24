@@ -1,0 +1,15 @@
+meta {
+  name: Deletar um Usuario por Id
+  type: http
+  seq: 5
+}
+
+delete {
+  url: http://localhost:8080/api/v1/usuario
+  body: none
+  auth: inherit
+}
+
+settings {
+  encodeUrl: true
+}

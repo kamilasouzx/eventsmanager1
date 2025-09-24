@@ -1,0 +1,15 @@
+meta {
+  name: Buscar Todos os Usuarios
+  type: http
+  seq: 4
+}
+
+get {
+  url: http://localhost:8080/api/v1/usuario
+  body: none
+  auth: inherit
+}
+
+settings {
+  encodeUrl: true
+}

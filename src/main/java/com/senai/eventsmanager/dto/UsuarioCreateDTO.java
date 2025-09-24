@@ -3,6 +3,7 @@ package com.senai.eventsmanager.dto;
 import com.senai.eventsmanager.entity.UsuarioEnum;
 import jakarta.persistence.Column;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 public class UsuarioCreateDTO {
@@ -13,12 +14,14 @@ public class UsuarioCreateDTO {
     private String telefone;
     private UsuarioEnum tipo;//usuario, organizador, adm
     private Date dataNascimento;
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
     //Construtores
 
     public UsuarioCreateDTO() {
     }
 
-    public UsuarioCreateDTO(String email, String senha, String nome, String cpf, String telefone, UsuarioEnum tipo, Date dataNascimento) {
+    public UsuarioCreateDTO(String email, String senha, String nome, String cpf, String telefone, UsuarioEnum tipo, Date dataNascimento,  LocalDateTime createdAt, LocalDateTime updatedAt) {
         this.email = email;
         this.senha = senha;
         this.nome = nome;
@@ -26,6 +29,8 @@ public class UsuarioCreateDTO {
         this.telefone = telefone;
         this.tipo = tipo;
         this.dataNascimento = dataNascimento;
+        this.createdAt = LocalDateTime.now();
+        this.updatedAt = LocalDateTime.now();
     }
 
     //getters e setters
@@ -85,4 +90,12 @@ public class UsuarioCreateDTO {
     public void setDataNascimento(Date dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
+
+    public LocalDateTime getUpdatedAt() { return updatedAt; }
+
+    public void setUpdatedAt(LocalDateTime updatedAt) { this.updatedAt = updatedAt;}
+
+    public LocalDateTime getCreatedAt() { return createdAt;}
+
+    public void setCreatedAt(LocalDateTime createdAt) { this.createdAt = createdAt;}
 }
