@@ -1,7 +1,7 @@
 package com.senai.eventsmanager.controller;
 
 
-import com.senai.eventsmanager.dto.InscricaoCreateDTO;
+import com.senai.eventsmanager.dto.InscricaoDTO;
 import com.senai.eventsmanager.service.InscricaoService;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,25 +15,25 @@ public class InscricaoController {
 
     // pegar uma inscricao pelo seu id
     @GetMapping("/{id}")
-    public InscricaoCreateDTO findById(@PathVariable("id") UUID id){
+    public InscricaoDTO findById(@PathVariable("id") UUID id){
         return service.findById(id);
     }
     // pegar todos as inscricoes
     @GetMapping
-    public List<InscricaoCreateDTO> findAll(){
+    public List<InscricaoDTO> findAll(){
         return service.findAll();
     }
     // salvar uma inscricao
     @PostMapping
-    public InscricaoCreateDTO save(
-            @RequestBody InscricaoCreateDTO inscricaoCreateDTO ){
+    public InscricaoDTO save(
+            @RequestBody InscricaoDTO inscricaoCreateDTO ){
         return service.save(inscricaoCreateDTO);
     }
     // atualizar uma inscricao
     @PutMapping("/{id}")
-    public InscricaoCreateDTO update(
+    public InscricaoDTO update(
             @PathVariable("id")UUID id,
-            @RequestBody InscricaoCreateDTO inscricaoCreateDTO){
+            @RequestBody InscricaoDTO inscricaoCreateDTO){
         return service.update(id,inscricaoCreateDTO);
     }
     // deletar uma inscricao pelo seu id

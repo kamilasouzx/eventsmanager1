@@ -1,0 +1,45 @@
+package com.senai.eventsmanager.dto;
+
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+import java.util.Date;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.senai.eventsmanager.enums.UsuarioEnum;
+
+public class UsuarioDTO {
+
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
+    private Long id;
+
+    @NotBlank(message = "O email deve ser preenchido")
+    @Size(max = 150, message =  "O email deve ter no máximo 150 caracteres")
+    @Email(message = "Email invalido")
+    private String email;
+
+    @NotBlank(message = "A senha deve ser preenchida")
+    @Size(max = 35, message =  "A senha deve ter no máximo 35 caracteres")
+    private String senha;
+
+    @NotBlank(message = "O nome deve ser preenchido")
+    @Size(max = 150, message =  "O nome deve ter no máximo 150 caracteres")
+    private String nome;
+
+    @NotBlank(message = "O CPF deve ser preenchido")
+    @JsonFormat(pattern = "###.###.###-##")
+    private String cpf;
+
+    @NotBlank(message = "O telefone deve ser preenchido")
+    @Size(max = 15, message =  "O telefone deve ter no máximo 15 caracteres")
+    private String telefone;
+
+    @NotNull(message = "O tipo do usuario deve ser preenchido")
+    private UsuarioEnum tipo;
+
+    @NotNull(message = "A data de nascimento deve ser preenchida")
+    @JsonFormat(pattern = "dd/MM/yyyy")
+    private Date dataNascimento;
+    
+}
