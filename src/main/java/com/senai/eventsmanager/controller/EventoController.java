@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/v1/evento")
@@ -15,9 +14,15 @@ public class EventoController {
     @Autowired
     EventoService service;
 
+    //listar todos os eventos entre duas datas api/v1/evento/calendario/2025/10/01/2025-10-31
+    @GetMapping("/calendario/{dataInicio}/{dataFinal}")
+    public List<EventoDTO> calendario(@PathVariable String dataInicio, @PathVariable String dataFinal){
+        return service.calendario(dataInicio, dataFinal);
+    }
+
     // pegar um evento pelo seu id
     @GetMapping("/{id}")
-    public EventoDTO findById(@PathVariable("id") UUID id){
+    public EventoDTO findById(@PathVariable("id") Long id){
         return service.findById(id);
     }
     // pegar todos os eventos
@@ -34,13 +39,13 @@ public class EventoController {
     // atualizar um evento
     @PutMapping("/{id}")
     public EventoDTO update(
-            @PathVariable("id")UUID id,
+            @PathVariable("id")Long id,
             @RequestBody EventoDTO eventoCreateDTO){
         return service.update(id,eventoCreateDTO);
     }
     // deletar um evento pelo seu id
     @DeleteMapping("/{id}")
-    public void deleteById(@PathVariable("id")UUID id){
+    public void deleteById(@PathVariable("id")Long id){
 
         service.deleteById(id);
     }

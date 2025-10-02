@@ -6,7 +6,6 @@ import com.senai.eventsmanager.service.InscricaoService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/v1/inscricao") //  http://localhost:8080/api/v1/inscricao/1
@@ -15,7 +14,7 @@ public class InscricaoController {
 
     // pegar uma inscricao pelo seu id
     @GetMapping("/{id}")
-    public InscricaoDTO findById(@PathVariable("id") UUID id){
+    public InscricaoDTO findById(@PathVariable("id") Long id){
         return service.findById(id);
     }
     // pegar todos as inscricoes
@@ -32,13 +31,13 @@ public class InscricaoController {
     // atualizar uma inscricao
     @PutMapping("/{id}")
     public InscricaoDTO update(
-            @PathVariable("id")UUID id,
+            @PathVariable("id")Long id,
             @RequestBody InscricaoDTO inscricaoCreateDTO){
         return service.update(id,inscricaoCreateDTO);
     }
     // deletar uma inscricao pelo seu id
     @DeleteMapping("/{id}")
-    public void deleteById(@PathVariable("id")UUID id){
+    public void deleteById(@PathVariable("id")Long id){
         service.deleteById(id);
     }
 

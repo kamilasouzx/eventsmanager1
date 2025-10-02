@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/v1/auth")
 public class AuthController {
  
-    
     @GetMapping
     public int index(){
         return 200;
@@ -26,3 +25,4 @@ public class AuthController {
     return "Kamila";
 }
 }
+

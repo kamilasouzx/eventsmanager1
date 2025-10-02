@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/v1/usuario") //  http://localhost:8080/api/v1/usuario/1
@@ -16,9 +15,17 @@ public class UsuarioController {
 
     // pegar um usuario pelo seu id
     @GetMapping("/{id}")
-    public UsuarioDTO findById(@PathVariable("id") UUID id){
+    public UsuarioDTO findById(@PathVariable("id") Long id){
         return service.findById(id);
     }
+
+    // pegar todos os clientes
+    @GetMapping("/{UsuarioEnum}")
+    public List<UsuarioDTO> clientes(@PathVariable("UsuarioEnum")){
+        return service.clientes(UsuarioEnum);
+
+    }
+
     // pegar todos um usuarios
     @GetMapping
     public List<UsuarioDTO> findAll(){
@@ -33,13 +40,13 @@ public class UsuarioController {
     // atualizar um usuario
     @PutMapping("/{id}")
     public UsuarioDTO update(
-            @PathVariable("id")UUID id,
+            @PathVariable("id")Long id,
             @RequestBody UsuarioDTO usuarioCreateDTO){
         return service.update(id,usuarioCreateDTO);
     }
     // deletar um usuario pelo seu id
     @DeleteMapping("/{id}")
-    public void deleteById(@PathVariable("id")UUID id){
+    public void deleteById(@PathVariable("id")Long id){
         service.deleteById(id);
     }
 
