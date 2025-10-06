@@ -2,6 +2,7 @@ package com.senai.eventsmanager.service;
 
 import com.senai.eventsmanager.dto.EventoDTO;
 import com.senai.eventsmanager.entity.Evento;
+import com.senai.eventsmanager.enums.EventoEnum;
 import com.senai.eventsmanager.repository.EventoRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,6 +46,19 @@ public class EventoService {
     public void deleteById(Long id) {
         eventoRepository.deleteById(id);
     }
+
+    //metodo para buscar por tipo de evento
+    public List<EventoDTO> findByTipo(EventoEnum tipo){
+    List<Evento> eventos = eventoRepository.findByTipo(tipo);
+
+        List<EventoDTO> eventoDTOs = new ArrayList<>();
+        for (Evento evento : eventos){
+            eventoDTOs.add(toDTO(evento));
+        }
+        return eventoDTOs;
+    }
+
+
 
     //metodo para listar eventos entre duas datas
     public List<EventoDTO> calendario(String inicio, String dataFinal) {

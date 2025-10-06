@@ -4,11 +4,23 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import java.util.Date;
+
+import org.hibernate.validator.constraints.br.CPF;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.senai.eventsmanager.enums.UsuarioEnum;
 
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class UsuarioDTO {
 
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)
@@ -28,7 +40,7 @@ public class UsuarioDTO {
     private String nome;
 
     @NotBlank(message = "O CPF deve ser preenchido")
-    @JsonFormat(pattern = "###.###.###-##")
+    @CPF
     private String cpf;
 
     @NotBlank(message = "O telefone deve ser preenchido")

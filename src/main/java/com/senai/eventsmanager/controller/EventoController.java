@@ -1,6 +1,7 @@
 package com.senai.eventsmanager.controller;
 
 import com.senai.eventsmanager.dto.EventoDTO;
+import com.senai.eventsmanager.enums.EventoEnum;
 import com.senai.eventsmanager.service.EventoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -13,6 +14,11 @@ import java.util.List;
 public class EventoController {
     @Autowired
     EventoService service;
+
+    @GetMapping("/filtroEvento/{tipo}")
+    public List<EventoDTO> filtroEvento(@PathVariable("tipo") EventoEnum tipo){ 
+        return service.findByTipo(tipo);
+    }
 
     //listar todos os eventos entre duas datas api/v1/evento/calendario/2025/10/01/2025-10-31
     @GetMapping("/calendario/{dataInicio}/{dataFinal}")
