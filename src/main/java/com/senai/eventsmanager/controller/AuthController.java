@@ -9,20 +9,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/v1/auth")
 public class AuthController {
  
-    @GetMapping
-    public int index(){
-        return 200;
-
+    @PostMapping("/login")
+    public String login(){
+        return "";
     }
 
-    @GetMapping("/ping")
-    public String ping(){
-        return "pong";
-    }
-
-    @PostMapping("/nome")
-    public String nome(){
-    return "Kamila";
-}
 }
 
