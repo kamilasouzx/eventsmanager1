@@ -16,6 +16,7 @@ import org.hibernate.validator.constraints.br.CPF;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.senai.eventsmanager.enums.UsuarioEnum;
+import com.senai.eventsmanager.validation.DeveTerGato;
 
 @Getter
 @Setter
@@ -31,8 +32,8 @@ public class UsuarioDTO {
     @Email(message = "Email invalido")
     private String email;
 
-    @NotBlank(message = "A senha deve ser preenchida")
-    @Size(max = 35, message =  "A senha deve ter no máximo 35 caracteres")
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    @DeveTerGato
     private String senha;
 
     @NotBlank(message = "O nome deve ser preenchido")

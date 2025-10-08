@@ -6,6 +6,7 @@ import com.senai.eventsmanager.enums.UsuarioEnum;
 import com.senai.eventsmanager.repository.UsuarioRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,6 +15,9 @@ import java.util.List;
 public class UsuarioService {
     @Autowired
     private UsuarioRepository usuarioRepository;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     //metodo para buscar usuarios por tipo
     public List<UsuarioDTO> findByTipo(UsuarioEnum tipo){
@@ -37,6 +41,10 @@ public class UsuarioService {
     //metodo para salvar um usuario
     public UsuarioDTO save(UsuarioDTO usuarioDTO) {
         Usuario usuario = toEntity(usuarioDTO);
+        //CRIPTOGRAFAR A SENHA
+        String senhaCriptografada = passwordEncoder.encode(usuarioDTO.getSenha());
+        usuario.setSenha(senhaCriptografada);
+        
         usuario = usuarioRepository.save(usuario);
         return toDTO(usuario);
     }
