@@ -11,4 +11,7 @@ public interface UsuarioRepository extends
     
             @Query("SELECT u FROM Usuario u WHERE u.tipo = :tipo") //:tipo é variavel
             List<Usuario> findByTipo(UsuarioEnum tipo);
+
+            @Query("SELECT u FROM Usuario u WHERE u.email = :email")
+            Usuario findByEmail(String email); //qnd n quer lista, quer só um
 }

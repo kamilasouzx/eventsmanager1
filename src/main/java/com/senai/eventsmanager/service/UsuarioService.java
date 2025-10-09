@@ -85,4 +85,16 @@ public class UsuarioService {
         BeanUtils.copyProperties(dto, usuario);
         return usuario;
     }
+
+    public boolean autenticar (String email, String senha){
+        Usuario usuario = usuarioRepository.findByEmail(email);
+
+        if(usuario != null){
+            String senhaNoBanco = usuario.getSenha();
+            return passwordEncoder.matches(senha,senhaNoBanco);
+        }
+
+        return false;
+
+    }
 }
