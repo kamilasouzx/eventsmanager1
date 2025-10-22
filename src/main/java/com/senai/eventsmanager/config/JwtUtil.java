@@ -1,7 +1,6 @@
 package com.senai.eventsmanager.config;
 
 import java.security.Key;
-import java.security.Signature;
 import java.sql.Date;
 
 import org.springframework.stereotype.Component;
